@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1 class="mb-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <%= link_to "Statements", statements_path %>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+      </ol>
+    </nav>
+  </h1>
+
+  <%= render 'form', statement: @statement %>
+</div>
