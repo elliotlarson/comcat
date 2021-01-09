@@ -1,5 +1,6 @@
 class StatementsController < ApplicationController
-  before_action :set_statement, only: [:show, :edit, :update, :destroy]
+  before_action :set_statement, only: %i[show edit update destroy]
+  before_action :setup
 
   # GET /statements
   # GET /statements.json
@@ -32,7 +33,10 @@ class StatementsController < ApplicationController
         format.html { redirect_to statements_path, notice: 'Statement was successfully created.' }
         format.json { render :show, status: :created, location: @statement }
       else
-        format.html { render :index }
+        format.html do
+          @statements = Statement.all.order(created_at: :desc)
+          render :index
+        end
         format.json { render json: @statement.errors, status: :unprocessable_entity }
       end
     end
@@ -63,13 +67,18 @@ class StatementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_statement
-      @statement = Statement.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def statement_params
-      params.require(:statement).permit(:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_statement
+    @statement = Statement.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def statement_params
+    params.require(:statement).permit(:body)
+  end
+
+  def setup
+    @active_nav = "statements"
+  end
 end

@@ -29,10 +29,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem "gist"         # Allows copy and paste in a pry session
+  gem 'pry'
+  gem "pry-byebug"   # Debugging with pry and byebug
+  gem "pry-inline"   # Adds inline printing of values in the pry `whereami` code
+  gem "pry-rails"    # Rails pry initializer, use pry instead of irb for console
+
   gem 'apparition' # Capybara Chrome driver that uses CDP instead of a web driver
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem "rspec"
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 

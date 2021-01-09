@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: ["nav-link", ("active" if request.path == "/")] %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", page_path("about"), class: "nav-link" %>
+          <%= link_to "About", page_path("about"), class: ["nav-link", ("active" if request.path == "/about")] %>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact", page_path("contact"), class: "nav-link" %>
+          <%= link_to "Contact", page_path("contact"), class: ["nav-link", ("active" if request.path == "/contact")] %>
         </li>
         <li class="nav-item">
-          <%= link_to "Statements", statements_path, class: "nav-link" %>
+          <%= link_to "Statements", statements_path, class: ["nav-link", ("active" if active_nav == "statements")] %>
         </li>
       </ul>
     </div>

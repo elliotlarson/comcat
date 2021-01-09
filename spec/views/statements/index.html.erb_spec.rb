@@ -1,19 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "statements/index", type: :view do
-  before(:each) do
-    assign(:statements, [
-      Statement.create!(
-        body: "MyText"
-      ),
-      Statement.create!(
-        body: "MyText"
-      )
-    ])
+  before do
+    assign(
+      :statements,
+      [
+        Statement.create!(body: "Statement #1"),
+        Statement.create!(body: "Statement #2"),
+      ]
+    )
+    assign(:statement, Statement.new)
   end
 
   it "renders a list of statements" do
     render
-    assert_select "tr>td", text: "MyText".to_s, count: 2
+    assert_select ".card>.card-body", count: 3
   end
 end
